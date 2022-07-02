@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workstation on m-spangenberg.github.io</title>
+    <link>https://m-spangenberg.github.io/tags/workstation/</link>
+    <description>Recent content in workstation on m-spangenberg.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 01 Jul 2022 01:07:45 +0200</lastBuildDate><atom:link href="https://m-spangenberg.github.io/tags/workstation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fedora Developer Workstation</title>
+      <link>https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/</guid>
+      <description>Photo by Micaela Alejandro
+Summary As part of my migration from Debian to Fedora, I&amp;rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&amp;rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
+I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers.</description>
+    </item>
+    
+  </channel>
+</rss>

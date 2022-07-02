@@ -7,9 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 01 Jul 2022 01:07:45 +0200</lastBuildDate><atom:link href="https://m-spangenberg.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker</title>
+      <link>https://m-spangenberg.github.io/tags/docker/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://m-spangenberg.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>fedora</title>
+      <link>https://m-spangenberg.github.io/tags/fedora/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/fedora/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>flatpak</title>
+      <link>https://m-spangenberg.github.io/tags/flatpak/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/flatpak/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quick-start</title>
+      <link>https://m-spangenberg.github.io/tags/quick-start/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/quick-start/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software development</title>
+      <link>https://m-spangenberg.github.io/tags/software-development/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/software-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workstation</title>
+      <link>https://m-spangenberg.github.io/tags/workstation/</link>
+      <pubDate>Fri, 01 Jul 2022 01:07:45 +0200</pubDate>
+      
+      <guid>https://m-spangenberg.github.io/tags/workstation/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

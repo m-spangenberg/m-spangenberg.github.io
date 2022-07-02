@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="M. Spangenberg ">
+<meta name="description" content="Photo by Micaela Alejandro
+Summary As part of my migration from Debian to Fedora, I&amp;rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&amp;rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
+I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers." />
+<meta name="keywords" content="personal blog, creative, code, art, photography, namibia, erongo, walvis bay, marthinus, spangenberg, fedora, workstation, quick-start, flatpak, docker, software development" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/" />
+
+
+    <title>
+        
+            Fedora Developer Workstation :: m-spangenberg.github.io
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://m-spangenberg.github.io/main.d1ea4af8fd04fb24a4f8b882ea54bd04eb245427ca4baf527c81a5dab071410b.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Fedora Developer Workstation">
+<meta itemprop="description" content="Photo by Micaela Alejandro
+Summary As part of my migration from Debian to Fedora, I&rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
+I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers."><meta itemprop="datePublished" content="2022-07-01T01:07:45+02:00" />
+<meta itemprop="dateModified" content="2022-07-01T01:07:45+02:00" />
+<meta itemprop="wordCount" content="579"><meta itemprop="image" content="https://m-spangenberg.github.io/"/>
+<meta itemprop="keywords" content="fedora,workstation,quick-start,flatpak,docker,software development," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://m-spangenberg.github.io/"/>
+
+<meta name="twitter:title" content="Fedora Developer Workstation"/>
+<meta name="twitter:description" content="Photo by Micaela Alejandro
+Summary As part of my migration from Debian to Fedora, I&rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
+I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers."/>
+
+
+
+    <meta property="og:title" content="Fedora Developer Workstation" />
+<meta property="og:description" content="Photo by Micaela Alejandro
+Summary As part of my migration from Debian to Fedora, I&rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
+I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/" /><meta property="og:image" content="https://m-spangenberg.github.io/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-01T01:07:45+02:00" />
+<meta property="article:modified_time" content="2022-07-01T01:07:45+02:00" /><meta property="og:site_name" content="m-spangenberg.github.io" />
+
+
+
+
+
+    <meta property="article:section" content="operating-system" />
+
+
+
+    <meta property="article:published_time" content="2022-07-01 01:07:45 &#43;0200 CAT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://m-spangenberg.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">system ready</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://m-spangenberg.github.io/about/">About</a></li><li><a href="https://m-spangenberg.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/">Fedora Developer Workstation</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p><img src="https://m-spangenberg.github.io/images/posts/tut-fedoraworkstation-fresh/post_header.png" alt="A landscape of mountain ranges in the ocean as seen from a tunnel exit"></p>
+<p><a href="https://www.pexels.com/photo/landscape-nature-sky-desert-10757870/">Photo by Micaela Alejandro</a></p>
+<h2 id="summary">Summary</h2>
+<p>As part of my migration from Debian to Fedora, I&rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.</p>
+<p>I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers. 😄 This is far from being a stripped down and &lsquo;<em>bloat-free</em>&rsquo; Arch installation (more on that next time!), however it is <strong>stable</strong> and <strong>boring</strong>, and when you&rsquo;re trying to get stuff done, that counts for a lot.</p>
+<hr>
+<h3 id="get-updates">Get Updates</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check for updates</span>
+</span></span><span style="display:flex;"><span>dnf check-update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install updates</span>
+</span></span><span style="display:flex;"><span>sudo dnf upgrade
+</span></span></code></pre></div><h3 id="enable-rpmfusion-and-flathub">Enable RPMFusion and Flathub</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Flathub Repos</span>
+</span></span><span style="display:flex;"><span>flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># RPMFusion Free Repos</span>
+</span></span><span style="display:flex;"><span>sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-<span style="color:#66d9ef">$(</span>rpm -E %fedora<span style="color:#66d9ef">)</span>.noarch.rpm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># RPMFusion Nonfree Repos</span>
+</span></span><span style="display:flex;"><span>sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span style="color:#66d9ef">$(</span>rpm -E %fedora<span style="color:#66d9ef">)</span>.noarch.rpm
+</span></span></code></pre></div><h3 id="install-multimedia-codecs">Install Multimedia Codecs:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install gstreamer1-plugins-<span style="color:#f92672">{</span>bad-<span style="color:#ae81ff">\*</span>,good-<span style="color:#ae81ff">\*</span>,base<span style="color:#f92672">}</span> gstreamer1-plugin-openh264
+</span></span><span style="display:flex;"><span>sudo dnf install lame<span style="color:#ae81ff">\*</span> --exclude<span style="color:#f92672">=</span>lame-devel
+</span></span><span style="display:flex;"><span>sudo dnf group upgrade --with-optional Multimedia
+</span></span></code></pre></div><h3 id="install-nvidia-drivers">Install Nvidia Drivers:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add NVIDIA drivers to the system</span>
+</span></span><span style="display:flex;"><span>sudo dnf install akmod-nvidia
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Optional: Add CUDA support</span>
+</span></span><span style="display:flex;"><span>sudo dnf install xorg-x11-drv-nvidia-cuda
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if everything works, wait a few minutes</span>
+</span></span><span style="display:flex;"><span>modinfo -F version nvidia
+</span></span></code></pre></div><h3 id="flatpak-applications">Flatpak Applications</h3>
+<p>Note: The Zoom flatpak looks a little crusty, I think I&rsquo;ll just use the browser instead. The Chrome flatpak isn&rsquo;t quite there yet either. I&rsquo;ve also opted not to use VS Code as a flatpak.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>flatpak install flathub com.slack.Slack com.microsoft.Teams org.keepassxc.KeePassXC org.telegram.desktop org.signal.Signal org.remmina.Remmina io.mpv.Mpv org.videolan.VLC com.obsproject.Studio com.valvesoftware.Steam com.valvesoftware.Steam.CompatibilityTool.Proton org.inkscape.Inkscape org.blender.Blender org.gimp.GIMP org.freecadweb.FreeCAD org.kde.krita com.prusa3d.PrusaSlicer org.kde.kdenlive org.gnome.World.PikaBackup org.freedesktop.Platform.ffmpeg-full com.github.geigi.cozy
+</span></span></code></pre></div><h4 id="vscode-flatpak-extensions">VSCode Flatpak Extensions:</h4>
+<p>If you&rsquo;re stubborn, like me, and you want to give the VS Code Flatpak a go, you&rsquo;ll need to install and enable the neccesary SDKs after installing VS Code from Flathub. Since my focus here is on GO, Rust, Node, and Java, you&rsquo;ll need to install the extensions below. Python is already catered for.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install VS Code</span>
+</span></span><span style="display:flex;"><span>flatpak install flathub com.visualstudio.code
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install SDKs</span>
+</span></span><span style="display:flex;"><span>flatpak install flathub org.freedesktop.Sdk.Extension.golang org.freedesktop.Sdk.Extension.node16 org.freedesktop.Sdk.Extension.rust-stable org.freedesktop.Sdk.Extension.openjdk17
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable SDKs</span>
+</span></span><span style="display:flex;"><span>FLATPAK_ENABLE_SDK_EXT<span style="color:#f92672">=</span>rust-stable,golang,node16,openjdk17 flatpak run com.visualstudio.code
+</span></span></code></pre></div><h3 id="google-chrome">Google Chrome</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check to make sure you&#39;ve got third party repositories enabled.</span>
+</span></span><span style="display:flex;"><span>sudo dnf install fedora-workstation-repositories
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable the Google Chrome repository</span>
+</span></span><span style="display:flex;"><span>sudo dnf config-manager --set-enabled google-chrome
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install Google Chrome</span>
+</span></span><span style="display:flex;"><span>sudo dnf install google-chrome-stable
+</span></span></code></pre></div><h3 id="docker">Docker:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Extend DNF with Core Plugins</span>
+</span></span><span style="display:flex;"><span>sudo dnf -y install dnf-plugins-core
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add the Docker repository</span>
+</span></span><span style="display:flex;"><span>sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install Docker-Engine and Compose</span>
+</span></span><span style="display:flex;"><span>sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start Docker</span>
+</span></span><span style="display:flex;"><span>sudo systemctl start docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make sure Docker starts on boot</span>
+</span></span><span style="display:flex;"><span>sudo systemctl enable docker.service
+</span></span><span style="display:flex;"><span>sudo systemctl enable containerd.service
+</span></span></code></pre></div><h3 id="docker-images">Docker Images:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Pull docker images from the Docker Hub</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> img in python node mongo-express postgres dpage/pgadmin4 redis cassandra nginx mysql; <span style="color:#66d9ef">do</span> sudo docker pull $img; <span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>Note: Feel free to skip this step if you don&rsquo;t need any images yet.</p>
+<h3 id="additional-packages">Additional Packages:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install packages</span>
+</span></span><span style="display:flex;"><span>sudo dnf install pipenv nodejs hugo rust cargo golang java-latest-openjdk-devel.x86_64
+</span></span></code></pre></div><p>Note: pipenv pulls in pip and virtualenv, node pulls in npm.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add the VS Code repository</span>
+</span></span><span style="display:flex;"><span>sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+</span></span><span style="display:flex;"><span>sudo sh -c <span style="color:#e6db74">&#39;echo -e &#34;[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc&#34; &gt; /etc/yum.repos.d/vscode.repo&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update and install VS Code</span>
+</span></span><span style="display:flex;"><span>dnf check-update
+</span></span><span style="display:flex;"><span>sudo dnf install code
+</span></span></code></pre></div><h3 id="vscode-application-extensions">VSCode Application Extensions:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github.github-vscode-theme
+</span></span><span style="display:flex;"><span>dracula-theme.theme-dracula
+</span></span><span style="display:flex;"><span>esbenp.prettier-vscode
+</span></span><span style="display:flex;"><span>ms-python.black-formatter
+</span></span><span style="display:flex;"><span>mechatroner.rainbow-csv
+</span></span><span style="display:flex;"><span>ms-python.python
+</span></span><span style="display:flex;"><span>ms-python.vscode-pylance
+</span></span><span style="display:flex;"><span>ritwickdey.liveserver
+</span></span><span style="display:flex;"><span>streetsidesoftware.code-spell-checker
+</span></span><span style="display:flex;"><span>yzhang.markdown-all-in-one
+</span></span><span style="display:flex;"><span>golang.go
+</span></span><span style="display:flex;"><span>eg2.vscode-npm-script
+</span></span><span style="display:flex;"><span>azuretools.vscode-docker
+</span></span><span style="display:flex;"><span>ms-vscode.makefile-tools
+</span></span><span style="display:flex;"><span>rust-lang.rust-analyzer
+</span></span><span style="display:flex;"><span>mgmcdermott.vscode-language-babel
+</span></span><span style="display:flex;"><span>ms-vscode.vscode-typescript-next
+</span></span><span style="display:flex;"><span>redhat.java
+</span></span><span style="display:flex;"><span>github.copilot
+</span></span></code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7" y2="7"></line>
+          </svg><span class="tag"><a href="https://m-spangenberg.github.io/tags/fedora/">fedora</a></span><span class="tag"><a href="https://m-spangenberg.github.io/tags/workstation/">workstation</a></span><span class="tag"><a href="https://m-spangenberg.github.io/tags/quick-start/">quick-start</a></span><span class="tag"><a href="https://m-spangenberg.github.io/tags/flatpak/">flatpak</a></span><span class="tag"><a href="https://m-spangenberg.github.io/tags/docker/">docker</a></span><span class="tag"><a href="https://m-spangenberg.github.io/tags/software-development/">software development</a></span>
+        </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        579 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        2022-07-01 01:07 &#43;0200
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Fedora%20Developer%20Workstation&amp;body=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f&amp;title=Fedora%20Developer%20Workstation&amp;summary=Fedora%20Developer%20Workstation&amp;source=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f&amp;resubmit=true&amp;title=Fedora%20Developer%20Workstation" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Fedora%20Developer%20Workstation%20https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Fedora%20Developer%20Workstation&amp;url=https%3a%2f%2fm-spangenberg.github.io%2fposts%2f2022%2f07%2ffedora-developer-workstation%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <div>
+                <div>
+                    &nbsp; <a href="mailto:mspangenberg.dev@gmail.com" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a> &nbsp;&nbsp; <a href="https://twitter.com/marthinusx" target="_blank" rel="noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a> &nbsp;&nbsp; <a href="https://github.com/m-spangenberg" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a> &nbsp;&nbsp; <a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a> &nbsp;&nbsp; <a href="https://t.me/marthinusx/" target="_blank" rel="noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></a> &nbsp;
+                </div>
+                art.code.coffee
+            </div>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://m-spangenberg.github.io/bundle.min.e2a9675ced043d06ad6d3f13fafb0203d96c89eb2484878d5eb89d6da19559cbed55fb05ca9eae7be1e975cab83e3b2a1193afc357019620a509327c5a6a9c0f.js" integrity="sha512-4qlnXO0EPQatbT8T&#43;vsCA9lsieskhIeNXridbaGVWcvtVfsFyp6ue&#43;Hpdcq4PjsqEZOvw1cBliClCTJ8WmqcDw=="></script>
+
+
+
+    </body>
+</html>
