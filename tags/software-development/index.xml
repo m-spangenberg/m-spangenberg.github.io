@@ -15,8 +15,7 @@
       
       <guid>https://m-spangenberg.github.io/posts/2022/07/fedora-developer-workstation/</guid>
       <description>Photo by Micaela Alejandro
-Summary As part of my migration from Debian to Fedora, I&amp;rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&amp;rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java.
-I try to keep things as tidy as possible with Flatpak and Docker, while being reasonable about creature comforts like media codecs and graphics drivers.</description>
+Summary As part of my migration from Debian to Fedora, I&amp;rsquo;ve put together this brief guide to turning a fresh install of Fedora Workstation into a comfortable development environment geared towards getting things done. I&amp;rsquo;ve chosen packages and tools to support working with Python, TypeScript, Node, Rust, Go and even a little bit of Java. If you stumble across this, I hope it points you in the right direction.</description>
     </item>
     
   </channel>
