@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-spangenberg // Live Developer Node</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ff003c;
+            --muted-color: #666666;
+            --border-color: #222222;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #ff003c;
+            --muted-color: #999999;
+            --border-color: #eeeeee;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        main {
+            margin: 4rem 0;
+            max-width: 800px;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            line-height: 1.2;
+            user-select: none;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+            color: var(--accent-color);
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .glitch-text {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-color);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        /* Tag Cloud Styling */
+        .tag-cloud-container {
+            margin-top: 3rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 2rem;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            line-height: 2;
+        }
+
+        .tag {
+            color: var(--text-color);
+            opacity: 0.85;
+            transition: opacity 0.2s, color 0.2s;
+            display: inline-block;
+        }
+
+        .tag:hover {
+            color: var(--accent-color);
+            opacity: 1;
+            cursor: default;
+        }
+
+        .tag::before {
+            content: "#";
+            color: var(--accent-color);
+            margin-right: 2px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header>
+        <div class="logo">m-spangenberg:<span>~</span></div>
+        <button class="theme-toggle" onclick="toggleTheme()">TOGGLE_MODE</button>
+    </header>
+
+    <main>
+        <div class="terminal-prompt">$ github-api --fetch-profile</div>
+        <h1>BUILDING INTELLIGENT PIPELINES. PARSING AUTOMATION INTERFACES<span class="cursor">_</span></h1>
+        
+        <p id="developer-bio">
+            Software developer leveraging Python, Go, and frontend frameworks to construct functional data flows, local LLM architectures, asynchronous processing networks, and IoT hardware integration systems.
+        </p>
+
+        <div class="glitch-text" id="live-metrics">// GEOLOCATION: NAMIBIA | METRICS: ACTIVE</div>
+
+        <div class="grid">
+            <div>
+                <div class="section-title">Core_Stack</div>
+                <ul>
+                    <li>Python (Flask, Django, Gradio)</li>
+                    <li>Go (Goroutines, Networking)</li>
+                    <li>C++ (Arduino/Microcontrollers)</li>
+                    <li>AI / Vector Store Integration</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="section-title">Live_Repos</div>
+                <ul id="repo-list">
+                    <li><a href="https://github.com/m-spangenberg/qrgen" target="_blank">qrgen</a></li>
+                    <li><a href="https://github.com/m-spangenberg/demo-django-rag" target="_blank">demo-django-rag</a></li>
+                    <li><a href="https://github.com/m-spangenberg/phatpipe" target="_blank">phatpipe</a></li>
+                    <li><a href="https://github.com/m-spangenberg/HydroStatus" target="_blank">HydroStatus</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="section-title">Network_Nodes</div>
+                <ul>
+                    <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
+                    <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repositories</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tag-cloud-container">
+            <div class="section-title">Harvested_Keywords</div>
+            <div class="tag-cloud" id="tag-cloud">
+                <span class="tag" style="font-size: 0.9rem;">python</span>
+                <span class="tag" style="font-size: 0.9rem;">go</span>
+                <span class="tag" style="font-size: 0.9rem;">llm</span>
+                <span class="tag" style="font-size: 0.9rem;">automation</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer-copyright">&copy; 2026 M_SPANGENBERG</div>
+        <div id="api-status">SYS_STATUS: LOCAL_FALLBACK</div>
+    </footer>
+
+    <script>
+        // UI Custom Theme Logic
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // Async Live Fetch Pipeline
+        const username = 'm-spangenberg';
+
+        async function fetchGitHubData() {
+            try {
+                // Fetch Core Profile Data
+                const profileResponse = await fetch(`https://api.github.com/users/${username}`);
+                if (!profileResponse.ok) throw new Error('Profile connection error');
+                const profileData = await profileResponse.json();
+
+                // Fetch up to 100 Repos to comprehensively harvest tags, sorted by update recency
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+                if (!reposResponse.ok) throw new Error('Repos connection error');
+                const reposData = await reposResponse.json();
+
+                // Update UI Components dynamically
+                if (profileData.bio) {
+                    document.getElementById('developer-bio').innerText = profileData.bio;
+                }
+                
+                const loc = profileData.location || 'NAMIBIA';
+                const count = profileData.public_repos || '26';
+                document.getElementById('live-metrics').innerText = `// GEOLOCATION: ${loc.toUpperCase()} | METRICS: ${count} REPOS`;
+                
+                // 1. Populate the Live_Repos UI component (Limit display to top 5)
+                const repoListUI = document.getElementById('repo-list');
+                repoListUI.innerHTML = '';
+                
+                const topRepos = reposData.slice(0, 5);
+                topRepos.forEach(repo => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = repo.html_url;
+                    a.target = '_blank';
+                    a.innerText = repo.name;
+                    li.appendChild(a);
+                    repoListUI.appendChild(li);
+                });
+
+                // 2. Aggregate and calculate weights for the Tag Cloud
+                const tagCounts = {};
+                
+                reposData.forEach(repo => {
+                    // Extract primary programming language
+                    if (repo.language) {
+                        const lang = repo.language.toLowerCase();
+                        tagCounts[lang] = (tagCounts[lang] || 0) + 2; // Extra weight for main languages
+                    }
+                    // Extract repository topics
+                    if (repo.topics && Array.isArray(repo.topics)) {
+                        repo.topics.forEach(topic => {
+                            const cleanTopic = topic.toLowerCase();
+                            tagCounts[cleanTopic] = (tagCounts[cleanTopic] || 0) + 1;
+                        });
+                    }
+                });
+
+                // Render the Tag Cloud
+                const tagCloudUI = document.getElementById('tag-cloud');
+                tagCloudUI.innerHTML = '';
+
+                const tags = Object.keys(tagCounts);
+                
+                if (tags.length > 0) {
+                    const counts = Object.values(tagCounts);
+                    const minCount = Math.min(...counts);
+                    const maxCount = Math.max(...counts);
+                    
+                    // Sort alphabetically for clean indexing, or sort by weight if preferred
+                    tags.sort().forEach(tag => {
+                        const count = tagCounts[tag];
+                        let fontSize = 0.8;
+                        
+                        const span = document.createElement('span');
+                        span.className = 'tag';
+                        span.style.fontSize = `${fontSize.toFixed(2)}rem`;
+                        span.innerText = tag;
+                        span.title = `Occurrences/Weight: ${count}`;
+                        tagCloudUI.appendChild(span);
+                    });
+                } else {
+                    tagCloudUI.innerHTML = '<span class="glitch-text">// NO TAG DATA DEPLOYED</span>';
+                }
+
+                document.getElementById('api-status').innerText = 'SYS_STATUS: LIVE_STREAM';
+
+            } catch (error) {
+                console.warn("GitHub API rate limit or outage. Displaying stable fallback state.", error);
+                document.getElementById('api-status').innerText = 'SYS_STATUS: CACHED_FALLBACK';
+            }
+        }
+
+        // Instantiate fetch loop on execution
+        window.addEventListener('DOMContentLoaded', fetchGitHubData);
+    </script>
+</body>
+</html>
