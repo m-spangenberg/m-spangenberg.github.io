@@ -156,24 +156,24 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-bottom: 3rem;
-            max-width: 850px;
+            margin-bottom: 2rem;
         }
 
         .cta-banner {
             border-left: 3px solid var(--accent-color);
             background-color: var(--banner-bg);
-            padding: 1rem 1.25rem;
             font-size: 0.9rem;
             line-height: 1.5;
             white-space: pre-line;
+            padding: 1.5rem;
+            position: relative;
         }
 
         .cta-banner span {
             font-weight: bold;
             color: var(--accent-color);
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
@@ -274,6 +274,73 @@
             h1 { font-size: 1.75rem; }
             .grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .grid-left, .grid-right { gap: 2.5rem; }
+        }
+
+        .role-container {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--accent-color);
+            background-color: var(--banner-bg);
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .role-banner > span {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding: 0.2rem 0.5rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        .role-banner dl {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1rem 1.5rem;
+            align-items: start;
+        }
+
+        .role-banner dt {
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding-top: 0.1rem;
+        }
+
+        .role-banner dd {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .role-banner dd ul {
+            margin-top: 0.5rem;
+        }
+
+        .role-banner dd li {
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .role-banner dl {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .role-banner dt {
+                margin-bottom: -0.25rem;
+            }
+            
+            .role-banner dd {
+                padding-left: 0.5rem;
+                border-left: 1px dashed var(--border-color);
+            }
         }
     </style>
     
@@ -379,7 +446,7 @@
         <h1>BUILDING INTELLIGENT PIPELINES.<span class="cursor">_</span></h1>
         
         <p id="developer-bio">
-            Hey, I'm Marthinus. I started out as a hobby programmer back in 2012 scripting small, one-off utlities in Python and Bash. Today, I make a decent full-stack developer or product engineer. My most recent role was a long-term contract as the sole technical architect and end-to-end engineer on a greenfield internal sales platform for a Namibian ICT company.
+            Hey, I'm Marthinus. I started out as a hobby programmer back in 2012 scripting small, one-off utlities in Python and Bash. Today, I make a decent full-stack developer or product engineer.
         </p>
 
         <div class="cta-container">
@@ -430,14 +497,68 @@
                     </ul>
                 </div>
 
-                <div>
-                    <div class="section-title">System_Comms</div>
-                    <ul>
-                        <li><a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank">LinkedIn Socket</a></li>
-                        <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
-                        <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repository Node</a></li>
-                    </ul>
-                </div>
+            </div>
+        </div>
+
+        <div class="role-container">
+            <div class="role-banner">
+                <span>[LAST_ROLE]</span>
+                <dl>
+                    <dt>TYPE:</dt>
+                    <dd>CONTRACT</dd>
+                    
+                    <dt>PERIOD:</dt>
+                    <dd>40 MONTHS</dd>
+                    
+                    <dt>ROLE:</dt>
+                    <dd>TECHNICAL ARCHITECT & FULL-STACK ENGINEER</dd>
+                    
+                    <dt>PROJECT:</dt>
+                    <dd>GREENFIELD INTERNAL SALES PLATFORM</dd>
+                    
+                    <dt>LOCATION:</dt>
+                    <dd>NAMIBIA</dd>
+                    
+                    <dt>TECH_STACK:</dt>
+                    <dd>PYTHON, FLASK, GUNICORN, JINJA, MSSQL, AZURE, AZURE BLOB STORAGE, SQLALCHEMY, ALEMBIC, JAVASCRIPT, REACT, TAILWINDCSS, AZURE, PYDANTIC</dd>
+                    
+                    <dt>RESPONSIBILITIES:</dt>
+                    <dd>
+                        <ul>
+                            <li>Led discovery sessions, progress standups, feature walkthroughs.</li>
+                            <li>Produced UI/UX mockups, technical specifications, deployment runbooks, and internal technical documentation.</li>
+                            <li>Designed the application architecture, domain model, and workflow/state.</li>
+                            <li>Designed, implemented, migrated, and evolved the MSSQL / Azure SQL schema.</li>
+                            <li>Performed data-analysis on financial resources to validate integrity and health of the system.</li>
+                            <li>Built secure enterprise authentication and authorization, tenant-aware SSO, and granular RBAC controls.</li>
+                            <li>Implemented backend business workflows, REST APIs, financial validation, and external integrations.</li>
+                            <li>Developed a responsive hybrid frontend focused on usability for sales and operations users and visibility for managers.</li>
+                            <li>Implemented observability and operational tooling for metrics, dashboards, scheduled jobs, health scans, and diagnostics.</li>
+                            <li>Established CI/CD and local developer tooling for load testing and automated build/validation workflows.</li>
+                            <li>Wrote automated unit and integration tests and release tooling to improve maintainability and deployment confidence.</li>
+                        </ul>
+                    </dd>
+                    
+                    <dt>CLIENT:</dt>
+                    <dd>NAMIBIAN ICT COMPANY</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="grid-left">
+
+                <div class="section-title">System_Comms</div>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank">LinkedIn Socket</a></li>
+                    <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
+                    <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repository Node</a></li>
+                </ul>
+
+            </div>
+
+            <div class="grid-right">
+                
             </div>
         </div>
 
