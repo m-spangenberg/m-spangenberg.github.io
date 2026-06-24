@@ -12,19 +12,21 @@
 
     <style>
         :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
             --accent-color: #ff003c;
-            --muted-color: #666666;
-            --border-color: #222222;
+            --muted-color: #777777;
+            --border-color: #1f1f1f;
+            --banner-bg: rgba(255, 0, 60, 0.03);
         }
 
         [data-theme="light"] {
-            --bg-color: #ffffff;
-            --text-color: #000000;
+            --bg-color: #fafafa;
+            --text-color: #1a1a1a;
             --accent-color: #ff003c;
-            --muted-color: #999999;
-            --border-color: #eeeeee;
+            --muted-color: #7e7e7e;
+            --border-color: #e5e5e5;
+            --banner-bg: rgba(255, 0, 60, 0.02);
         }
 
         * {
@@ -38,11 +40,11 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
-            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            user-select: none;
         }
 
         header {
@@ -50,12 +52,16 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
+            padding: 1.5rem 2rem;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .logo {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -64,39 +70,47 @@
 
         .theme-toggle {
             background: none;
-            border: 1px solid var(--text-color);
+            border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 0.25rem 0.5rem;
+            padding: 0.4rem 0.75rem;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
         }
 
         .theme-toggle:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
         }
 
         main {
-            margin: 4rem 0;
-            max-width: 800px;
+            padding: 3rem 2rem;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            flex-grow: 1;
         }
 
         .terminal-prompt {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
         }
 
         h1 {
-            font-size: 2.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
             font-weight: normal;
-            line-height: 1.2;
-            user-select: none;
+            line-height: 1.3;
+            letter-spacing: -1px;
+            max-width: 900px;
         }
 
         .cursor {
             animation: blink 1s infinite;
             color: var(--accent-color);
+            font-weight: bold;
         }
 
         @keyframes blink {
@@ -104,44 +118,77 @@
             50%, 100% { opacity: 0; }
         }
 
+        #developer-bio {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            max-width: 850px;
+        }
+
         .cta-banner {
-            border: 1px solid var(--accent-color);
-            padding: 1rem;
-            margin: 2rem 0;
-            background-color: rgba(255, 0, 60, 0.03);
-            font-size: 0.95rem;
+            border-left: 3px solid var(--accent-color);
+            background-color: var(--banner-bg);
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-line;
         }
 
         .cta-banner span {
             font-weight: bold;
             color: var(--accent-color);
-        }
-
-        p {
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: var(--text-color);
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .glitch-text {
-            color: var(--muted-color);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 3rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 1rem;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+        }
+
+        .grid-left, .grid-right {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
 
         .section-title {
-            font-size: 1rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-bottom: 1.25rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            margin-left: 1rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         ul {
@@ -149,9 +196,11 @@
         }
 
         li {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             position: relative;
             padding-left: 1.2rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         li::before {
@@ -161,77 +210,47 @@
             color: var(--accent-color);
         }
 
-        /* Repo layout formatting for descriptions */
         .repo-desc {
             display: block;
             font-size: 0.8rem;
             color: var(--muted-color);
-            margin-top: 0.25rem;
-            line-height: 1.4;
+            margin-top: 0.4rem;
+            line-height: 1.5;
         }
 
         a {
             color: var(--text-color);
             text-decoration: none;
-            border-bottom: 1px dashed var(--accent-color);
+            border-bottom: 1px dashed var(--muted-color);
+            transition: all 0.2s ease;
         }
 
         a:hover {
             color: var(--accent-color);
-            border-bottom-style: solid;
-        }
-
-        .tag-cloud-container {
-            margin-top: 3rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 2rem;
-        }
-
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            align-items: center;
-            line-height: 2;
-        }
-
-        .tag {
-            color: var(--text-color);
-            opacity: 0.85;
-            transition: opacity 0.2s, color 0.2s;
-            display: inline-block;
-        }
-
-        .tag:hover {
-            color: var(--accent-color);
-            opacity: 1;
-            cursor: default;
-        }
-
-        .tag::before {
-            content: "#";
-            color: var(--accent-color);
-            margin-right: 2px;
+            border-bottom: 1px solid var(--accent-color);
         }
 
         footer {
             border-top: 1px solid var(--border-color);
-            padding-top: 1rem;
-            font-size: 0.8rem;
+            padding: 1.5rem 2rem;
+            font-size: 0.75rem;
             color: var(--muted-color);
             display: flex;
             justify-content: space-between;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
         }
 
-        @media (max-width: 600px) {
-            body { padding: 1rem; }
-            h1 { font-size: 1.8rem; }
-            .grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            header, main, footer { padding: 1.25rem; }
+            h1 { font-size: 1.75rem; }
+            .grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .grid-left, .grid-right { gap: 2.5rem; }
         }
     </style>
     
     <script>
-        // Inline Theme Lock Setup to block the white/black flash before parsing elements
         (function() {
             const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -247,84 +266,75 @@
 
     <main>
         <div class="terminal-prompt">$ github-api --fetch-profile</div>
-        <h1>BUILDING INTELLIGENT PIPELINES. PARSING AUTOMATION INTERFACES<span class="cursor">_</span></h1>
+        <h1>BUILDING INTELLIGENT PIPELINES.<span class="cursor">_</span></h1>
         
         <p id="developer-bio">
-            Software developer leveraging Python, Go, and frontend frameworks to construct functional data flows, local LLM architectures, asynchronous processing networks, and IoT hardware integration systems.
+            Hey, I'm Marthinus. I started out as a hobby programmer back in 2012 scripting small, one-off utlities in Python and Bash. Today, I make a decent full-stack developer or product engineer. My most recent role was a long-term contract as the sole technical architect and end-to-end engineer on a greenfield internal sales platform for a Namibian ICT company.
         </p>
 
-        <div class="cta-banner">
-            <span>[USR_SUMMARY]</span> Marthinus Spangenberg is a Backend-Heavy, Full-Stack Product Engineer with a strong leaning toward Systems & Applied AI/Data Engineering.
-        </div>
+        <div class="cta-container">
+            <div class="cta-banner">
+                <span>[USR_SUMMARY]</span>Marthinus Spangenberg is a Backend-Heavy, Full-Stack Product Engineer with a strong leaning toward Systems & Applied AI/Data Engineering.
+            </div>
 
-        <div class="cta-banner">
-            <span>[USR_ROLE]</span>
-            > AI/Product Backend Engineer
-            > "Full-Stack / Backend Engineer specializing in building scalable data pipelines, asynchronous architectures, and integrating local LLM/RAG workflows into web systems."
-        </div>
+            <div class="cta-banner">
+                <span>[DRM_ROLE]</span>> AI/Product Backend Engineer
+                > "Full-Stack / Backend Engineer specializing in building scalable data pipelines, asynchronous architectures, and integrating local AI workflows into web systems."
+            </div>
 
-        <div class="cta-banner">
-            <span>[USR_ROLE]</span> 
-            > Systems & IoT Engineer
-            > "Systems Engineer with a focus on IoT telemetry, embedded hardware integration, and reliable backend infrastructure."
         </div>
 
         <div class="glitch-text" id="live-metrics">// GEOLOCATION: NAMIBIA | METRICS: ACTIVE</div>
 
         <div class="grid">
-            <div>
-                <div class="section-title">Core_Stack</div>
-                <ul>
-                    <li>Python (Flask, Django, Gradio)</li>
-                    <li>Go (Goroutines, Networking)</li>
-                    <li>C / C++ (Arduino/Microcontrollers)</li>
-                    <li>AI / Vector Store Integration</li>
-                </ul>
+            <div class="grid-left">
+
+                <div>
+                    <div class="section-title">Core_Domains</div>
+                    <ul>
+                        <li>Product Engineering for Fintech, Logistics, & Enterprise Operations</li>
+                        <li>Full-Stack Web & Application Development, High-Performance Utilities</li>
+                        <li>Applied AI Integration, Data Engineering & Context-Aware Applications</li>
+                        <li>Trust & Safety Engineering, Risk Analysis & Fraud Detection</li>
+                        <li>Scalable Architecture, Infrastructure Design & Cloud-Native Systems</li>
+                        <li>Hardware Integration, IoT, & Low-Level Embedded Systems</li>
+                    </ul>
+                </div>
+
             </div>
 
-            <div>
-                <div class="section-title">Core_Domains</div>
-                <ul>
-                    <li>Product Engineering for Fintech, Logistics, & Enterprise Operations</li>
-                    <li>Full-Stack Web & Application Development, High-Performance Utilities</li>
-                    <li>Applied AI Integration, Data Engineering & Context-Aware Applications</li>
-                    <li>Trust & Safety Engineering, Risk Analysis & Fraud Detection</li>
-                    <li>Scalable Architecture, Infrastructure Design & Cloud-Native Systems</li>
-                    <li>Hardware Integration, IoT, & Low-Level Embedded Systems</li>
-                </ul>
-            </div>
-            
-            <div>
-                <div class="section-title">Live_Repos</div>
-                <ul id="repo-list">
-                    <li>
-                        <a href="https://github.com/m-spangenberg/qrgen" target="_blank">qrgen</a>
-                        <span class="repo-desc">Microservice architecture generating optimized vector-based code arrays.</span>
-                    </li>
-                    <li>
-                        <a href="https://github.com/m-spangenberg/demo-django-rag" target="_blank">demo-django-rag</a>
-                        <span class="repo-desc">Local retrieval augmented generation system connected to persistent document vector arrays.</span>
-                    </li>
-                    <li>
-                        <a href="https://github.com/m-spangenberg/phatpipe" target="_blank">phatpipe</a>
-                        <span class="repo-desc">Asynchronous multi-threaded logging parser and transmission layout engine.</span>
-                    </li>
-                    <li>
-                        <a href="https://github.com/m-spangenberg/HydroStatus" target="_blank">HydroStatus</a>
-                        <span class="repo-desc">IoT microchip script tracking flow dynamics and publishing state hooks over MQTT.</span>
-                    </li>
-                </ul>
-            </div>
+            <div class="grid-right">
+                <div>
+                    <div class="section-title">Live_Repos</div>
+                    <ul id="repo-list">
+                        <li>
+                            <a href="https://github.com/m-spangenberg/qrgen" target="_blank">qrgen</a>
+                            <span class="repo-desc">Microservice architecture generating optimized vector-based code arrays.</span>
+                        </li>
+                        <li>
+                            <a href="https://github.com/m-spangenberg/demo-django-rag" target="_blank">demo-django-rag</a>
+                            <span class="repo-desc">Local retrieval augmented generation system connected to persistent document vector arrays.</span>
+                        </li>
+                        <li>
+                            <a href="https://github.com/m-spangenberg/phatpipe" target="_blank">phatpipe</a>
+                            <span class="repo-desc">Asynchronous multi-threaded logging parser and transmission layout engine.</span>
+                        </li>
+                        <li>
+                            <a href="https://github.com/m-spangenberg/HydroStatus" target="_blank">HydroStatus</a>
+                            <span class="repo-desc">IoT microchip script tracking flow dynamics and publishing state hooks over MQTT.</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div>
-                <div class="section-title">System_Comms</div>
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank">LinkedIn Socket</a></li>
-                    <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
-                    <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repository Node</a></li>
-                </ul>
+                <div>
+                    <div class="section-title">System_Comms</div>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank">LinkedIn Socket</a></li>
+                        <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
+                        <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repository Node</a></li>
+                    </ul>
+                </div>
             </div>
-
         </div>
 
     </main>
@@ -335,42 +345,30 @@
     </footer>
 
     <script>
-        // UI Theme Logic with Persistence
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('portfolio-theme', newTheme);
         }
 
-        // Apply theme data assignment on load to match configuration state
-        document.body.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark');
-
         const username = 'm-spangenberg';
 
         async function fetchGitHubData() {
             try {
-                // Fetch Core Profile Data
                 const profileResponse = await fetch(`https://api.github.com/users/${username}`);
                 if (!profileResponse.ok) throw new Error('Profile connection error');
                 const profileData = await profileResponse.json();
 
-                // Fetch up to 5 Public Repos sorted by most recently updated
                 const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
                 if (!reposResponse.ok) throw new Error('Repos connection error');
                 const reposData = await reposResponse.json();
-
-                // Update UI Components dynamically
-                if (profileData.bio) {
-                    document.getElementById('developer-bio').innerText = profileData.bio;
-                }
                 
                 const loc = profileData.location || 'OFF-GRID';
                 const count = profileData.public_repos || '∞';
                 document.getElementById('live-metrics').innerText = `// GEOLOCATION: ${loc.toUpperCase()} | METRICS: ${count} REPOS`;
                 
-                // Clear and repopulate top 5 active repos with descriptions
                 const repoListUI = document.getElementById('repo-list');
                 repoListUI.innerHTML = '';
                 
@@ -384,7 +382,6 @@
                     a.innerText = repo.name;
                     li.appendChild(a);
                     
-                    // Fallback string used if no description is populated inside repository configurations
                     const descText = repo.description || 'No system summary provided for this node payload.';
                     const descSpan = document.createElement('span');
                     descSpan.className = 'repo-desc';
