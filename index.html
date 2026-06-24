@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="m-spangenberg // Live Developer Node">
+    <meta property="og:description" content="Software developer leveraging Python, Go, and frontend frameworks to construct functional data flows, local LLM architectures, and IoT hardware systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="m-spangenberg Portfolio">
+
     <title>m-spangenberg // Live Developer Node</title>
+
     <style>
         :root {
             --bg-color: #000000;
@@ -98,6 +104,19 @@
             50%, 100% { opacity: 0; }
         }
 
+        .cta-banner {
+            border: 1px solid var(--accent-color);
+            padding: 1rem;
+            margin: 2rem 0;
+            background-color: rgba(255, 0, 60, 0.03);
+            font-size: 0.95rem;
+        }
+
+        .cta-banner span {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
         p {
             line-height: 1.6;
             margin-bottom: 2rem;
@@ -112,8 +131,8 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
 
@@ -130,7 +149,7 @@
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             position: relative;
             padding-left: 1.2rem;
         }
@@ -140,6 +159,15 @@
             position: absolute;
             left: 0;
             color: var(--accent-color);
+        }
+
+        /* Repo layout formatting for descriptions */
+        .repo-desc {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            margin-top: 0.25rem;
+            line-height: 1.4;
         }
 
         a {
@@ -153,7 +181,6 @@
             border-bottom-style: solid;
         }
 
-        /* Tag Cloud Styling */
         .tag-cloud-container {
             margin-top: 3rem;
             border-top: 1px dashed var(--border-color);
@@ -202,8 +229,16 @@
             .grid { grid-template-columns: 1fr; }
         }
     </style>
+    
+    <script>
+        // Inline Theme Lock Setup to block the white/black flash before parsing elements
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
-<body data-theme="dark">
+<body>
 
     <header>
         <div class="logo">m-spangenberg:<span>~</span></div>
@@ -218,6 +253,22 @@
             Software developer leveraging Python, Go, and frontend frameworks to construct functional data flows, local LLM architectures, asynchronous processing networks, and IoT hardware integration systems.
         </p>
 
+        <div class="cta-banner">
+            <span>[USR_SUMMARY]</span> Marthinus Spangenberg is a Backend-Heavy, Full-Stack Product Engineer with a strong leaning toward Systems & Applied AI/Data Engineering.
+        </div>
+
+        <div class="cta-banner">
+            <span>[USR_ROLE]</span>
+            > AI/Product Backend Engineer
+            > "Full-Stack / Backend Engineer specializing in building scalable data pipelines, asynchronous architectures, and integrating local LLM/RAG workflows into web systems."
+        </div>
+
+        <div class="cta-banner">
+            <span>[USR_ROLE]</span> 
+            > Systems & IoT Engineer
+            > "Systems Engineer with a focus on IoT telemetry, embedded hardware integration, and reliable backend infrastructure."
+        </div>
+
         <div class="glitch-text" id="live-metrics">// GEOLOCATION: NAMIBIA | METRICS: ACTIVE</div>
 
         <div class="grid">
@@ -226,39 +277,56 @@
                 <ul>
                     <li>Python (Flask, Django, Gradio)</li>
                     <li>Go (Goroutines, Networking)</li>
-                    <li>C++ (Arduino/Microcontrollers)</li>
+                    <li>C / C++ (Arduino/Microcontrollers)</li>
                     <li>AI / Vector Store Integration</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="section-title">Core_Domains</div>
+                <ul>
+                    <li>Product Engineering for Fintech, Logistics, & Enterprise Operations</li>
+                    <li>Full-Stack Web & Application Development, High-Performance Utilities</li>
+                    <li>Applied AI Integration, Data Engineering & Context-Aware Applications</li>
+                    <li>Trust & Safety Engineering, Risk Analysis & Fraud Detection</li>
+                    <li>Scalable Architecture, Infrastructure Design & Cloud-Native Systems</li>
+                    <li>Hardware Integration, IoT, & Low-Level Embedded Systems</li>
                 </ul>
             </div>
             
             <div>
                 <div class="section-title">Live_Repos</div>
                 <ul id="repo-list">
-                    <li><a href="https://github.com/m-spangenberg/qrgen" target="_blank">qrgen</a></li>
-                    <li><a href="https://github.com/m-spangenberg/demo-django-rag" target="_blank">demo-django-rag</a></li>
-                    <li><a href="https://github.com/m-spangenberg/phatpipe" target="_blank">phatpipe</a></li>
-                    <li><a href="https://github.com/m-spangenberg/HydroStatus" target="_blank">HydroStatus</a></li>
+                    <li>
+                        <a href="https://github.com/m-spangenberg/qrgen" target="_blank">qrgen</a>
+                        <span class="repo-desc">Microservice architecture generating optimized vector-based code arrays.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/m-spangenberg/demo-django-rag" target="_blank">demo-django-rag</a>
+                        <span class="repo-desc">Local retrieval augmented generation system connected to persistent document vector arrays.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/m-spangenberg/phatpipe" target="_blank">phatpipe</a>
+                        <span class="repo-desc">Asynchronous multi-threaded logging parser and transmission layout engine.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/m-spangenberg/HydroStatus" target="_blank">HydroStatus</a>
+                        <span class="repo-desc">IoT microchip script tracking flow dynamics and publishing state hooks over MQTT.</span>
+                    </li>
                 </ul>
             </div>
 
             <div>
-                <div class="section-title">Network_Nodes</div>
+                <div class="section-title">System_Comms</div>
                 <ul>
+                    <li><a href="https://www.linkedin.com/in/marthinus-spangenberg/" target="_blank">LinkedIn Socket</a></li>
                     <li><a href="https://github.com/m-spangenberg" target="_blank">GitHub Profile</a></li>
-                    <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repositories</a></li>
+                    <li><a href="https://github.com/m-spangenberg?tab=repositories" target="_blank">Repository Node</a></li>
                 </ul>
             </div>
+
         </div>
 
-        <div class="tag-cloud-container">
-            <div class="section-title">Harvested_Keywords</div>
-            <div class="tag-cloud" id="tag-cloud">
-                <span class="tag" style="font-size: 0.9rem;">python</span>
-                <span class="tag" style="font-size: 0.9rem;">go</span>
-                <span class="tag" style="font-size: 0.9rem;">llm</span>
-                <span class="tag" style="font-size: 0.9rem;">automation</span>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -267,18 +335,18 @@
     </footer>
 
     <script>
-        // UI Custom Theme Logic
+        // UI Theme Logic with Persistence
         function toggleTheme() {
-            const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
         }
 
-        // Async Live Fetch Pipeline
+        // Apply theme data assignment on load to match configuration state
+        document.body.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark');
+
         const username = 'm-spangenberg';
 
         async function fetchGitHubData() {
@@ -288,8 +356,8 @@
                 if (!profileResponse.ok) throw new Error('Profile connection error');
                 const profileData = await profileResponse.json();
 
-                // Fetch up to 100 Repos to comprehensively harvest tags, sorted by update recency
-                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+                // Fetch up to 5 Public Repos sorted by most recently updated
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
                 if (!reposResponse.ok) throw new Error('Repos connection error');
                 const reposData = await reposResponse.json();
 
@@ -298,69 +366,33 @@
                     document.getElementById('developer-bio').innerText = profileData.bio;
                 }
                 
-                const loc = profileData.location || 'NAMIBIA';
-                const count = profileData.public_repos || '26';
+                const loc = profileData.location || 'OFF-GRID';
+                const count = profileData.public_repos || '∞';
                 document.getElementById('live-metrics').innerText = `// GEOLOCATION: ${loc.toUpperCase()} | METRICS: ${count} REPOS`;
                 
-                // 1. Populate the Live_Repos UI component (Limit display to top 5)
+                // Clear and repopulate top 5 active repos with descriptions
                 const repoListUI = document.getElementById('repo-list');
                 repoListUI.innerHTML = '';
                 
                 const topRepos = reposData.slice(0, 5);
                 topRepos.forEach(repo => {
                     const li = document.createElement('li');
+                    
                     const a = document.createElement('a');
                     a.href = repo.html_url;
                     a.target = '_blank';
                     a.innerText = repo.name;
                     li.appendChild(a);
+                    
+                    // Fallback string used if no description is populated inside repository configurations
+                    const descText = repo.description || 'No system summary provided for this node payload.';
+                    const descSpan = document.createElement('span');
+                    descSpan.className = 'repo-desc';
+                    descSpan.innerText = descText;
+                    li.appendChild(descSpan);
+                    
                     repoListUI.appendChild(li);
                 });
-
-                // 2. Aggregate and calculate weights for the Tag Cloud
-                const tagCounts = {};
-                
-                reposData.forEach(repo => {
-                    // Extract primary programming language
-                    if (repo.language) {
-                        const lang = repo.language.toLowerCase();
-                        tagCounts[lang] = (tagCounts[lang] || 0) + 2; // Extra weight for main languages
-                    }
-                    // Extract repository topics
-                    if (repo.topics && Array.isArray(repo.topics)) {
-                        repo.topics.forEach(topic => {
-                            const cleanTopic = topic.toLowerCase();
-                            tagCounts[cleanTopic] = (tagCounts[cleanTopic] || 0) + 1;
-                        });
-                    }
-                });
-
-                // Render the Tag Cloud
-                const tagCloudUI = document.getElementById('tag-cloud');
-                tagCloudUI.innerHTML = '';
-
-                const tags = Object.keys(tagCounts);
-                
-                if (tags.length > 0) {
-                    const counts = Object.values(tagCounts);
-                    const minCount = Math.min(...counts);
-                    const maxCount = Math.max(...counts);
-                    
-                    // Sort alphabetically for clean indexing, or sort by weight if preferred
-                    tags.sort().forEach(tag => {
-                        const count = tagCounts[tag];
-                        let fontSize = 0.8;
-                        
-                        const span = document.createElement('span');
-                        span.className = 'tag';
-                        span.style.fontSize = `${fontSize.toFixed(2)}rem`;
-                        span.innerText = tag;
-                        span.title = `Occurrences/Weight: ${count}`;
-                        tagCloudUI.appendChild(span);
-                    });
-                } else {
-                    tagCloudUI.innerHTML = '<span class="glitch-text">// NO TAG DATA DEPLOYED</span>';
-                }
 
                 document.getElementById('api-status').innerText = 'SYS_STATUS: LIVE_STREAM';
 
@@ -370,7 +402,6 @@
             }
         }
 
-        // Instantiate fetch loop on execution
         window.addEventListener('DOMContentLoaded', fetchGitHubData);
     </script>
 </body>
